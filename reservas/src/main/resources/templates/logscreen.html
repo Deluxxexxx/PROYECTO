@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>LOGIN</title>
@@ -7,10 +7,14 @@
 <body>
 <h1>LOGIN</h1>
 <form action="/login" method="POST">
-    <label for="mail">Email:</label>
-    <input type="text" id="Email" placeholder="Email2@ejemplo.com required=true">
+    <label>Email:</label>
+    <input type="text" name="email" id="Email" placeholder="<Email2@ejemplo.com>" required="required">
     <br>
     <br>
+    <label>Contrasena:</label>
+    <input type="password" name="password" id="Password" placeholder="<PASSWORD>" required="required">
+    <br>
+    <button type="submit">Confirmar</button>
 </form>
 </body>
 </html>

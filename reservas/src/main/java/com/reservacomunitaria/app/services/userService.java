@@ -13,4 +13,9 @@ public class userService {
     public user getUserByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password).orElse(null);
     }
+
+    public  user registerUser(user user) {
+        user newUser = userRepository.save(user);
+        return newUser;
+    }
 }
