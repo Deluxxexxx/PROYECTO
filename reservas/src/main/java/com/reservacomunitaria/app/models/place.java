@@ -79,4 +79,12 @@ public class place {
     public void setAvailable(Boolean available) {
         this.available = available;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }
