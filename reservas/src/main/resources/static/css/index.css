@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h2 {
+    color: #B026FF;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #5A1D94;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #B026FF;
+}
