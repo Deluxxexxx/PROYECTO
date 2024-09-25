@@ -1,4 +1,4 @@
-package com.reservacomunitaria.app.services;
+package com.reservacomunitaria.app.repositories;
 
 import com.reservacomunitaria.app.models.user;
 import org.springframework.data.jpa.repository.JpaRepository;
