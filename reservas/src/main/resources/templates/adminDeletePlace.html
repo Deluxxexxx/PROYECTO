@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>SITIOS</title>
+  <link rel="stylesheet" href="/css/homepage.css">
+</head>
+<body>
+<h1>SITIOS DISPONIBLES</h1>
+<hr>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Capacidad</th>
+    <th>Dirección</th>
+    <th>Disponible</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="place : ${places}">
+    <td th:text="${place.id}"></td>
+    <td th:text="${place.name}"></td>
+    <td th:text="${place.description}"></td>
+    <td th:text="${place.capacity}"></td>
+    <td th:text="${place.address}"></td>
+    <td th:text="${place.available ? 'Sí' : 'No'}"></td>
+    <td>
+      <form action="/deletePlace" method="POST" style="display:inline;">
+        <input type="hidden" name="id" th:value="${place.id}"/>
+        <button type="submit">Borrar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
+

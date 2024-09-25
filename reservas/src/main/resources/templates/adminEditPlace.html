@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>EDITAR SITIO</title>
+  <link rel="stylesheet" href="/css/adminEditPlace.css">
+</head>
+<body>
+<h1>EDITAR SITIO</h1>
+<form action="/updatePlace" method="POST">
+  <input type="hidden" name="id" th:value="${place.id}"/> <!-- ID oculto para actualizar -->
+
+  <label>Nombre:</label>
+  <input type="text" name="name" th:value="${place.name}" required="required">
+  <br><br>
+
+  <label>Descripción:</label>
+  <input type="text" name="description" th:value="${place.description}" required="required">
+  <br><br>
+
+  <label>Capacidad:</label>
+  <input type="number" name="capacity" th:value="${place.capacity}" required="required">
+  <br><br>
+
+  <label>Dirección:</label>
+  <input type="text" name="address" th:value="${place.address}" required="required">
+  <br><br>
+
+  <label>Disponible:</label>
+  <select name="available">
+    <option value="true" th:selected="${place.available}">Sí</option>
+    <option value="false" th:selected="${!place.available}">No</option>
+  </select>
+
+  <button type="submit">Actualizar</button>
+</form>
+</body>
+</html>

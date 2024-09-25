@@ -1,6 +1,5 @@
 body {
     background-color: black;
-    color: white;
     font-family: Arial, sans-serif;
 }
 
@@ -17,47 +16,53 @@ h2 {
 
 hr {
     color: #B026FF;
-    margin: 20px auto;
-    width: 80%;
 }
 
-form {
+table {
     width: 80%;
     margin: 20px auto;
-    background-color: #2E2E2E;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
+    border-collapse: collapse;
     color: white;
 }
 
-input[type="text"],
-input[type="number"],
-select {
-    width: calc(100% - 20px);
-    padding: 10px;
+th, td {
     border: 1px solid #B026FF;
-    border-radius: 4px;
-    background-color: #1C1C1C;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #5A1D94;
     color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #2E2E2E;
+}
+
+tr:hover {
+    background-color: #3E3E3E;
+}
+
+a {
+    color: #B026FF;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 button {
     background-color: #B026FF;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #9A1D94;
+    background-color: #5A1D94;
 }

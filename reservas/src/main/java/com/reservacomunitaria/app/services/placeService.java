@@ -19,4 +19,16 @@ public class placeService {
     public void insertPlace(place newPlace) {
         placeRepository.save(newPlace);
     }
+
+    public void deletePlace(long id) {
+        placeRepository.deleteById(id);
+    }
+
+    public place getPlaceById(long id) {
+        return placeRepository.findById(id).orElse(null);
+    }
+
+    public void updatePlace(place updatedPlace) {
+        placeRepository.save(updatedPlace);
+    }
 }
