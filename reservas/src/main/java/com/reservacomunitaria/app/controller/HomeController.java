@@ -1,9 +1,7 @@
-package com.reservacomunitaria.app.services;
+package com.reservacomunitaria.app.controller;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -13,5 +11,3 @@ public class HomeController {
         return "index";
     }
 }
-
-

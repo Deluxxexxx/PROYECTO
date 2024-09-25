@@ -12,6 +12,7 @@ public class place {
 
     private String name;
     private String description;
+    private int capacity;
     private String address;
-    private Boolean active;
+    private Boolean available;
 }

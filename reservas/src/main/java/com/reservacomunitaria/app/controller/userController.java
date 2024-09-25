@@ -15,9 +15,9 @@ public class userController {
     @Autowired
     private userService userService;
 
-    @PostMapping("/logscreen")
+    @PostMapping("/loginScreen")
     public String login(){
-        return "logscreen";
+        return "loginScreen";
     }
 
     @PostMapping("/login")
@@ -25,17 +25,17 @@ public class userController {
         if(userService.getUserByEmailAndPassword(email, password) != null){
             return "homepage";
         }
-        return "logscreen";
+        return "loginScreen";
     }
 
     @PostMapping("/register")
     public String register(@RequestParam String email, @RequestParam String password, @RequestParam String username){
-        userService.registerUser(new user(email, password, username));
-        return "logscreen";
+        userService.registerUser(new user(username, email, password));
+        return "loginScreen";
     }
 
     @PostMapping("/registerField")
     public String registerField(){
-        return "usercreation";
+        return "registerScreen";
     }
 }
