@@ -2,21 +2,18 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="/css/homepage.css">
+    <title>PANEL ADMINISTRATIVO</title>
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-<h1>SITIOS DISPONIBLES</h1>
+<h1>PANEL ADMINISTRATIVO</h1>
 <hr>
 
-<div style="text-align: center; margin-bottom: 20px;">
-    <form action="/user/viewReservePlace" method="GET" style="display:inline;">
-        <button type="submit">Reservar un Lugar</button>
-    </form>
-    <form action="/user/viewReserves" method="GET" style="display:inline;">
-        <button type="submit">Ver Mis Reservas</button>
-    </form>
-</div>
+<h2>Gestión de Espacios</h2>
+
+<form action="/loadCreatePlace" method="POST" style="display:inline;">
+    <button type="submit">Crear espacio</button>
+</form>
 
 <table>
     <thead>
@@ -27,6 +24,7 @@
         <th>Capacidad</th>
         <th>Dirección</th>
         <th>Disponible</th>
+        <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -37,8 +35,16 @@
         <td th:text="${place.capacity}"></td>
         <td th:text="${place.address}"></td>
         <td th:text="${place.available ? 'Sí' : 'No'}"></td>
+        <td>
+            <a th:href="@{/adminEditPlace(id=${place.id})}">Editar</a>
+            <form action="/deletePlace" method="POST" style="display:inline;">
+                <input type="hidden" name="id" th:value="${place.id}"/>
+                <button type="submit">Borrar</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
 </body>
 </html>
+
