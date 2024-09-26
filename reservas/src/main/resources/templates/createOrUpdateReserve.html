@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservar Lugar</title>
-  <link rel="stylesheet" href="/css/admin.css"> <!-- Asegúrate de reutilizar tus estilos aquí -->
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 <h1>Reservar Lugar</h1>
 <hr>
 
 <form action="/user/reservePlace" method="POST">
-  <input type="hidden" name="userId" value="${userId}"> <!-- ID del usuario que reserva -->
+  <input type="hidden" name="userId" value="${userId}">
 
   <label for="placeId">Seleccionar Lugar:</label>
   <select id="placeId" name="placeId">
-    <!-- Aquí puedes hacer un loop para mostrar todos los lugares disponibles -->
+
     <option th:each="place : ${places}" th:value="${place.id}" th:text="${place.name}"></option>
   </select>
   <br><br>

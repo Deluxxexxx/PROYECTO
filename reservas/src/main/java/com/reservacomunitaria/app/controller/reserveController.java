@@ -26,15 +26,13 @@ public class reserveController {
     @Autowired
     private userService userService;
 
-    // Mostrar todas las reservas del usuario
     @GetMapping("/user/reserves")
     public String viewReserves(Model model, @RequestParam("userId") long userId) {
         List<reserve> reserves = reserveService.getReservesByUserId(userId);
         model.addAttribute("reserves", reserves);
-        return "userReserves"; // Página donde el usuario verá sus reservas
+        return "userReserves";
     }
 
-    // Crear una nueva reserva
     @PostMapping("/user/reservePlace")
     public String reservePlace(@RequestParam("userId") long userId,
                                @RequestParam("placeId") long placeId,
@@ -47,7 +45,6 @@ public class reserveController {
         return "redirect:/user/reserves?userId=" + userId;
     }
 
-    // Modificar una reserva existente
     @PostMapping("/user/updateReserve")
     public String updateReserve(@RequestParam("reserveId") long reserveId,
                                 @RequestParam("fecha") String fecha,
@@ -59,7 +56,6 @@ public class reserveController {
         return "redirect:/user/reserves?userId=" + existingReserve.getUser().getId();
     }
 
-    // Eliminar una reserva
     @PostMapping("/user/deleteReserve")
     public String deleteReserve(@RequestParam("reserveId") long reserveId,
                                 @RequestParam("userId") long userId) {
