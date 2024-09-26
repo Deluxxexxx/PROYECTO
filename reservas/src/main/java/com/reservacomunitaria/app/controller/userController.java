@@ -6,6 +6,7 @@ import com.reservacomunitaria.app.models.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.reservacomunitaria.app.services.userService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,5 +74,15 @@ public class userController {
     @PostMapping("/registerField")
     public String registerField(){
         return "registerScreen";
+    }
+
+    @GetMapping("/user/viewReservePlace")
+    public String reservePlace(){
+        return "createOrUpdateReserve";
+    }
+
+    @GetMapping("/user/viewReserves")
+    public String reserves(){
+        return "userReserves";
     }
 }

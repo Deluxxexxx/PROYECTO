@@ -15,6 +15,10 @@ public class userService {
     @Autowired
     private adminRepository adminRepository;
 
+    public user getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
     public user getUserByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password).orElse(null);
     }

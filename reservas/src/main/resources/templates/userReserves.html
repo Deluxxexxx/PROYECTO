@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Reservas</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<h1>Mis Reservas</h1>
+<hr>
+
+<table>
+  <thead>
+  <tr>
+    <th>Lugar</th>
+    <th>Fecha</th>
+    <th>Hora</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="reserve : ${reserves}">
+    <td th:text="${reserve.place.name}"></td>
+    <td th:text="${reserve.fecha}"></td>
+    <td th:text="${reserve.hora}"></td>
+    <td>
+      <a th:href="@{/user/updateReserve(reserveId=${reserve.id})}">Modificar</a>
+      <form action="/user/deleteReserve" method="POST" style="display:inline;">
+        <input type="hidden" name="reserveId" th:value="${reserve.id}">
+        <input type="hidden" name="userId" th:value="${userId}">
+        <button type="submit">Eliminar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a href="homepage">Reservar nuevo lugar</a>
+</body>
+</html>

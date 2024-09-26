@@ -8,7 +8,7 @@
 <body>
 <h1>EDITAR SITIO</h1>
 <form action="/updatePlace" method="POST">
-  <input type="hidden" name="id" th:value="${place.id}"/> <!-- ID oculto para actualizar -->
+  <input type="hidden" name="id" th:value="${place.id}"/>
 
   <label>Nombre:</label>
   <input type="text" name="name" th:value="${place.name}" required="required">

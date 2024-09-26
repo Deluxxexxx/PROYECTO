@@ -66,3 +66,25 @@ button {
 button:hover {
     background-color: #5A1D94;
 }
+
+form button {
+    background-color: #B026FF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+form button:hover {
+    background-color: #5A1D94;
+}
+
+form button:focus {
+    outline: none;
+    box-shadow: 0 0 5px #B026FF;
+}
