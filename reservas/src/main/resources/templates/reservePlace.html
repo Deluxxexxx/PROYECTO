@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Reserva</title>
+</head>
+<body>
+<h1>Reservar Lugar</h1>
+<form action="/reserva/crear" method="POST">
+    <input type="hidden" name="place.id" th:value="${reserva.place.id}"/>
+
+    <label for="fecha">Fecha:</label>
+    <input type="date" name="fecha" required/>
+
+    <label for="hora">Hora:</label>
+    <input type="time" name="hora" required/>
+
+    <button type="submit">Confirmar Reserva</button>
+</form>
+</body>
+</html>
+

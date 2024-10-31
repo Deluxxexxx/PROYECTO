@@ -1,6 +1,6 @@
 package com.reservacomunitaria.app.services;
 
-import com.reservacomunitaria.app.models.place;
+import com.reservacomunitaria.app.models.Place;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.reservacomunitaria.app.repositories.placeRepository;
@@ -12,11 +12,11 @@ public class placeService {
     @Autowired
     private placeRepository placeRepository;
 
-    public List<place> getAllPlaces(){
+    public List<Place> getAllPlaces(){
         return placeRepository.findAll();
     }
 
-    public void insertPlace(place newPlace) {
+    public void insertPlace(Place newPlace) {
         placeRepository.save(newPlace);
     }
 
@@ -24,11 +24,11 @@ public class placeService {
         placeRepository.deleteById(id);
     }
 
-    public place getPlaceById(long id) {
+    public Place getPlaceById(long id) {
         return placeRepository.findById(id).orElse(null);
     }
 
-    public void updatePlace(place updatedPlace) {
+    public void updatePlace(Place updatedPlace) {
         placeRepository.save(updatedPlace);
     }
 }

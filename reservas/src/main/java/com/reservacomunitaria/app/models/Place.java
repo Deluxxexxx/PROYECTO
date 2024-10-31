@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "places")
-public class place {
+public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<reserve> reservas;
+    private List<Reserve> reservas;
 
     private String name;
     private String description;
@@ -21,7 +21,7 @@ public class place {
     private String address;
     private Boolean available;
 
-    public place(String name, String description, int capacity, String address, Boolean available) {
+    public Place(String name, String description, int capacity, String address, Boolean available) {
         this.name = name;
         this.description = description;
         this.capacity = capacity;
@@ -29,14 +29,14 @@ public class place {
         this.available = available;
     }
 
-    public place() {
+    public Place() {
     }
 
-    public List<reserve> getReservas() {
+    public List<Reserve> getReservas() {
         return reservas;
     }
 
-    public void setReservas(List<reserve> reservas) {
+    public void setReservas(List<Reserve> reservas) {
         this.reservas = reservas;
     }
 

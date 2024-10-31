@@ -1,7 +1,7 @@
 package com.reservacomunitaria.app.services;
 
 import com.reservacomunitaria.app.models.admin;
-import com.reservacomunitaria.app.models.user;
+import com.reservacomunitaria.app.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.reservacomunitaria.app.repositories.userRepository;
@@ -15,11 +15,15 @@ public class userService {
     @Autowired
     private adminRepository adminRepository;
 
-    public user getUserById(Long id) {
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public user getUserByEmailAndPassword(String email, String password) {
+    public User getUserByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password).orElse(null);
     }
 
@@ -29,15 +33,15 @@ public class userService {
 
 
 
-    public  user registerUser(user user) {
+    public User registerUser(User user) {
 
         if (userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword()).isPresent()) {
             throw new RuntimeException("El email ya se encuentra registrado");
         }
 
-        user.setRole(com.reservacomunitaria.app.models.user.Role.USER);
+        user.setRole(User.Role.USER);
 
-        user newUser = userRepository.save(user);
+        User newUser = userRepository.save(user);
         return newUser;
     }
 }

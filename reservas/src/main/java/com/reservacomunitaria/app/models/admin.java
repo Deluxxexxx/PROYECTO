@@ -8,7 +8,7 @@ import jakarta.persistence.Enumerated;
 public class admin extends person {
 
     @Enumerated(EnumType.STRING)
-    private user.Role role;
+    private User.Role role;
 
     public admin(String username, String email, String password) {
         super(username, email, password);
@@ -18,11 +18,11 @@ public class admin extends person {
         super();
     }
 
-    public user.Role getRole() {
+    public User.Role getRole() {
         return role;
     }
 
-    public void setRole(user.Role role) {
+    public void setRole(User.Role role) {
         this.role = role;
     }
 }

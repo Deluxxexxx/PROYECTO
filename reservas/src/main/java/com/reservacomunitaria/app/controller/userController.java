@@ -1,13 +1,12 @@
 package com.reservacomunitaria.app.controller;
 
 import com.reservacomunitaria.app.models.admin;
-import com.reservacomunitaria.app.models.place;
-import com.reservacomunitaria.app.models.user;
+import com.reservacomunitaria.app.models.Place;
+import com.reservacomunitaria.app.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.reservacomunitaria.app.services.userService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.reservacomunitaria.app.services.placeService;
@@ -48,15 +47,15 @@ public class userController {
 
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {
-        user loggedInUser = userService.getUserByEmailAndPassword(email, password);
+        User loggedInUser = userService.getUserByEmailAndPassword(email, password);
         admin loggedInAdmin = userService.getAdminByEmailAndPassword(email, password);
 
         if (loggedInUser != null) {
-            List<place> places = placeService.getAllPlaces();
+            List<Place> places = placeService.getAllPlaces();
             model.addAttribute("places", places);
             return "homepage";
         } else if (loggedInAdmin != null) {
-            List<place> places = placeService.getAllPlaces();
+            List<Place> places = placeService.getAllPlaces();
             model.addAttribute("places", places);
             return "admin";
         }
@@ -67,7 +66,7 @@ public class userController {
 
     @PostMapping("/register")
     public String register(@RequestParam String email, @RequestParam String password, @RequestParam String username){
-        userService.registerUser(new user(username, email, password));
+        userService.registerUser(new User(username, email, password));
         return "loginScreen";
     }
 

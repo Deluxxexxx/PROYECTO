@@ -6,19 +6,19 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class user extends person {
+public class User extends person {
 
     @OneToMany(mappedBy = "user")
-    private List<reserve> reservas;
+    private List<Reserve> reservas;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public user(String username, String email, String password) {
+    public User(String username, String email, String password) {
         super(username, email, password);
     }
 
-    public user() {
+    public User() {
         super();
     }
 

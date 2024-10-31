@@ -1,12 +1,12 @@
 package com.reservacomunitaria.app.models;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "reserves")
-public class reserve {
+public class Reserve {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,20 +16,28 @@ public class reserve {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private user user;
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "place_id", nullable = false)
-    private place place;
+    private Place place;
 
-    public reserve(LocalDate fecha, String hora, user user, place place) {
+    public Reserve() {
+    }
+
+    public Reserve(LocalDate fecha, String hora, User user, Place place) {
         this.fecha = fecha;
         this.hora = hora;
         this.user = user;
         this.place = place;
     }
 
-    public reserve() {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public LocalDate getFecha() {
@@ -48,19 +56,19 @@ public class reserve {
         this.hora = hora;
     }
 
-    public com.reservacomunitaria.app.models.user getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(com.reservacomunitaria.app.models.user user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
-    public com.reservacomunitaria.app.models.place getPlace() {
+    public Place getPlace() {
         return place;
     }
 
-    public void setPlace(com.reservacomunitaria.app.models.place place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
 }

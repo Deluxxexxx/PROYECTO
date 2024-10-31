@@ -1,6 +1,6 @@
 package com.reservacomunitaria.app.controller;
 
-import com.reservacomunitaria.app.models.place;
+import com.reservacomunitaria.app.models.Place;
 import com.reservacomunitaria.app.services.placeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +19,9 @@ public class adminController {
     private placeService placeService;
 
     @PostMapping("/addPlace")
-    public String addPlace(@ModelAttribute place newPlace, Model model) {
+    public String addPlace(@ModelAttribute Place newPlace, Model model) {
         placeService.insertPlace(newPlace);
-        List<place> places = placeService.getAllPlaces();
+        List<Place> places = placeService.getAllPlaces();
         model.addAttribute("places", places);
         return "admin";
     }
@@ -33,7 +33,7 @@ public class adminController {
 
     @GetMapping("/adminDeletePlace")
     public String deletePlace(Model model){
-        List<place> places = placeService.getAllPlaces();
+        List<Place> places = placeService.getAllPlaces();
         model.addAttribute("places", places);
         return "adminDeletePlace";
     }
@@ -46,7 +46,7 @@ public class adminController {
 
     @GetMapping("/adminEditPlace")
     public String editPlace(@RequestParam long id, Model model) {
-        place placeToEdit = placeService.getPlaceById(id);
+        Place placeToEdit = placeService.getPlaceById(id);
         model.addAttribute("place", placeToEdit);
         return "adminEditPlace";
     }
@@ -58,11 +58,11 @@ public class adminController {
                               @RequestParam int capacity,
                               @RequestParam String address,
                               @RequestParam boolean available, Model model) {
-        place updatedPlace = new place(name, description, capacity, address, available);
+        Place updatedPlace = new Place(name, description, capacity, address, available);
         updatedPlace.setId(id);
         placeService.updatePlace(updatedPlace);
 
-        List<place> places = placeService.getAllPlaces();
+        List<Place> places = placeService.getAllPlaces();
         model.addAttribute("places", places);
 
         return "admin";
