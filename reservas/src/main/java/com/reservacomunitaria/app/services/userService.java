@@ -27,7 +27,7 @@ public class userService {
     }
 
     public List<Reserve> getReservesByUserId(long userId) {
-        return reserveRepository.findByUserId(userId); // Asegúrate de que tu repositorio tenga este método
+        return reserveRepository.findByUserId(userId);
     }
 
 
@@ -58,6 +58,6 @@ public class userService {
     }
 
     public User getUserByEmail(String email) {
-        return userRepository.findByEmail(email); // Método que busca por correo en el repositorio
+        return userRepository.findByEmail(email);
     }
 }
