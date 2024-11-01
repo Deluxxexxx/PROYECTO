@@ -33,4 +33,9 @@ public class ReservaService {
     public Reserve getReserveById(long id) {
         return reservaRepository.findById(id).orElse(null);
     }
+
+    public List<Reserve> getReservesByUserId(long userId) {
+        return reservaRepository.findByUserId(userId);
+    }
+
 }

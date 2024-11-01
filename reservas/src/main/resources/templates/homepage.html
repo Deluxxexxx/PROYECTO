@@ -10,7 +10,7 @@
 <hr>
 
 <div style="text-align: center; margin-bottom: 20px;">
-    <form action="/user/viewReserves" method="GET" style="display:inline;">
+    <form th:action="@{/reserva/mis-reservas}" method="GET">
         <button type="submit">Ver Mis Reservas</button>
     </form>
 </div>
@@ -36,7 +36,7 @@
         <td th:text="${place.address}"></td>
         <td th:text="${place.available ? 'Sí' : 'No'}"></td>
         <td>
-            <form th:action="@{/reserva/mostrar}" method="POST">
+            <form th:action="@{/reserva/mostrar}" method="GET">
                 <input type="hidden" name="placeId" th:value="${place.id}" />
                 <button type="submit" th:disabled="${!place.available}">Reservar</button>
             </form>

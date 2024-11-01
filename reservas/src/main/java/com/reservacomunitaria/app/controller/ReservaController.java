@@ -10,11 +10,11 @@ import com.reservacomunitaria.app.services.ReservaService;
 import com.reservacomunitaria.app.services.placeService;
 import com.reservacomunitaria.app.services.userService;
 import com.reservacomunitaria.app.services.placeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
@@ -32,37 +32,44 @@ public class ReservaController {
     @Autowired
     private userService UserService;
 
-    @GetMapping("/reservas")
-    public String obtenerReservas(Model model) {
-        List<Reserve> reservas = reservaService.obtenerReservas();
+
+    @GetMapping("/mis-reservas")
+    public String obtenerMisReservas(Model model, Principal principal) {
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
+        User usuario = UserService.getUserByEmail(principal.getName());
+        List<Reserve> reservas = reservaService.getReservesByUserId(usuario.getId());
         model.addAttribute("reservas", reservas);
         return "userReserves";
     }
 
-    @PostMapping("/mostrar")
-    public String mostrarFormularioCreacion(@RequestParam long placeId , Model model) {
+    @GetMapping("/mostrar")
+    public String mostrarFormularioCreacion(@RequestParam long placeId, Model model, HttpSession session) {
         Reserve newReserve = new Reserve();
         newReserve.setPlace(PlaceService.getPlaceById(placeId));
+
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser != null) {
+            newReserve.setUser(loggedInUser);
+        }
+
         model.addAttribute("reserva", newReserve);
         return "reservePlace";
     }
 
     @PostMapping("/crear")
-    public String crearReserva(@ModelAttribute Reserve reserva, Principal principal) {
-        String username = principal.getName();
-        User user = UserService.findByUsername(username);
-
-        if (user != null) {
-            reserva.setUser(user);
-            CrearReservaCommand command = new CrearReservaCommand(reservaService, reserva);
-            command.execute();
-            return "redirect:/reserva/lista";
-        } else {
-            return "error";
+    public String crearReserva(@ModelAttribute Reserve reserva, HttpSession session) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser != null) {
+            reserva.setUser(loggedInUser);
+            reservaService.guardarReserva(reserva);
+            return "userReserves";
         }
+
+        return "loginScreen";
     }
-
-
 
     @GetMapping("/lista")
     public String listaReservas(Model model) {

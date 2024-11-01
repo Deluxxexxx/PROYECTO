@@ -1,11 +1,15 @@
 package com.reservacomunitaria.app.services;
 
+import com.reservacomunitaria.app.models.Reserve;
 import com.reservacomunitaria.app.models.admin;
 import com.reservacomunitaria.app.models.User;
+import com.reservacomunitaria.app.repositories.ReservaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.reservacomunitaria.app.repositories.userRepository;
 import com.reservacomunitaria.app.repositories.adminRepository;
+
+import java.util.List;
 
 @Service
 public class userService {
@@ -15,9 +19,17 @@ public class userService {
     @Autowired
     private adminRepository adminRepository;
 
+    @Autowired
+    private ReservaRepository reserveRepository;
+
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    public List<Reserve> getReservesByUserId(long userId) {
+        return reserveRepository.findByUserId(userId); // Asegúrate de que tu repositorio tenga este método
+    }
+
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -43,5 +55,9 @@ public class userService {
 
         User newUser = userRepository.save(user);
         return newUser;
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email); // Método que busca por correo en el repositorio
     }
 }

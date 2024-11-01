@@ -1,49 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Mis Reservas</title>
-  <link rel="stylesheet" href="/css/userReserves.css">
 </head>
 <body>
 <h1>Mis Reservas</h1>
-<hr>
 
 <table>
   <thead>
   <tr>
-    <th>ID Reserva</th>
-    <th>Nombre del Lugar</th>
-    <th>Fecha</th>
-    <th>Hora</th>
-    <th>Acciones</th>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>User</th>
+    <th>Place</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
-  <tr th:each="reserve : ${reserves}">
+  <tr th:each="reserve : ${reservas}">
     <td th:text="${reserve.id}"></td>
-    <td th:text="${reserve.place.name}"></td>
     <td th:text="${reserve.fecha}"></td>
     <td th:text="${reserve.hora}"></td>
+    <td th:text="${reserve.user.username}"></td>
+    <td th:text="${reserve.place.name}"></td>
     <td>
-      <form th:action="@{/user/updateReserve}" method="GET" style="display:inline;">
-        <input type="hidden" name="reserveId" th:value="${reserve.id}"/>
-        <button type="submit">Modificar</button>
+      <form th:action="@{/reserva/editar(id=${reserve.id})}" method="GET">
+        <button type="submit">Edit</button>
       </form>
-
-      <form th:action="@{/user/deleteReserve}" method="POST" style="display:inline;">
-        <input type="hidden" name="reserveId" th:value="${reserve.id}"/>
-        <button type="submit">Cancelar</button>
+      <form th:action="@{/reserva/eliminar}" method="POST">
+        <input type="hidden" name="id" th:value="${reserve.id}" />
+        <button type="submit">Delete</button>
       </form>
     </td>
   </tr>
   </tbody>
 </table>
 
-<div>
-  <a href="/">Volver a la página principal</a>
-</div>
-
+<a href="/homepage">Regresar a la página principal</a>
 </body>
 </html>
+
 

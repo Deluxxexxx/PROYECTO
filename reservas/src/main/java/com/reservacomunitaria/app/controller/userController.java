@@ -3,17 +3,18 @@ package com.reservacomunitaria.app.controller;
 import com.reservacomunitaria.app.models.admin;
 import com.reservacomunitaria.app.models.Place;
 import com.reservacomunitaria.app.models.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.reservacomunitaria.app.services.userService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import com.reservacomunitaria.app.services.placeService;
 import org.springframework.ui.Model;
 import java.util.List;
 
 @Controller
+@RequestMapping
+@SessionAttributes("loggedInUser")
 public class userController {
 
     @Autowired
@@ -27,24 +28,7 @@ public class userController {
         return "loginScreen";
     }
 
-    /*@PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password, Model model){
-        user loggedInUser = userService.getUserByEmailAndPassword(email, password);
-
-        if(loggedInUser != null){
-            List<place> places = placeService.getAllPlaces();
-            model.addAttribute("places", places);
-
-            if (loggedInUser.getRole() == user.Role.ADMIN){
-                return "redirect:/admin";
-            }
-            else{
-                return "homepage";
-            }
-        }
-        return "loginScreen";
-    }*/
-
+    /*
     @PostMapping("/login")
     public String login(@RequestParam String email, @RequestParam String password, Model model) {
         User loggedInUser = userService.getUserByEmailAndPassword(email, password);
@@ -62,7 +46,27 @@ public class userController {
 
         return "loginScreen";
     }
+    */
 
+    @PostMapping("/login")
+    public String login(@RequestParam String email, @RequestParam String password, Model model, HttpSession session) {
+        User loggedInUser = userService.getUserByEmailAndPassword(email, password);
+        admin loggedInAdmin = userService.getAdminByEmailAndPassword(email, password);
+
+        if (loggedInUser != null) {
+            session.setAttribute("loggedInUser", loggedInUser);
+            List<Place> places = placeService.getAllPlaces();
+            model.addAttribute("places", places);
+            return "homepage";
+        } else if (loggedInAdmin != null) {
+            session.setAttribute("loggedInAdmin", loggedInAdmin);
+            List<Place> places = placeService.getAllPlaces();
+            model.addAttribute("places", places);
+            return "admin";
+        }
+
+        return "loginScreen";
+    }
 
     @PostMapping("/register")
     public String register(@RequestParam String email, @RequestParam String password, @RequestParam String username){
