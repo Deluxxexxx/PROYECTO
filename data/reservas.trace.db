@@ -1792,3 +1792,261 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/Usuario
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 58 more
+2024-12-04 11:41:37.323543-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]USERS"; se esperaba "UPDATE"
+Syntax error in SQL statement "[*]USERS"; expected "UPDATE"; SQL statement:
+USERS [42001-224]
+2024-12-04 11:47:58.289419-05:00 jdbc[15]: null
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.util.JdbcUtils.getConnection(JdbcUtils.java:288)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:811)
+	at org.h2.server.web.WebApp.login(WebApp.java:1039)
+	at org.h2.server.web.WebApp.process(WebApp.java:227)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 47 more
+2024-12-04 13:17:36.567581-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE [*]PROCEDURE registrar_accion(\000d\000a  IN p_usuario VARCHAR(50),\000d\000a  IN p_accion VARCHAR(100)\000d\000a)\000d\000aBEGIN\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME)"; se esperaba "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"
+Syntax error in SQL statement "CREATE [*]PROCEDURE registrar_accion(\000d\000a  IN p_usuario VARCHAR(50),\000d\000a  IN p_accion VARCHAR(100)\000d\000a)\000d\000aBEGIN\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME)"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+CREATE PROCEDURE registrar_accion(
+  IN p_usuario VARCHAR(50),
+  IN p_accion VARCHAR(100)
+)
+BEGIN
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME) [42001-224]
+2024-12-04 13:17:36.573117-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]END"
+Syntax error in SQL statement "[*]END"; SQL statement:
+END [42000-224]
+2024-12-04 13:19:31.470611-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(?,?,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(?,?,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (?, ?, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 13:20:18.626152-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 13:20:45.658205-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INSERTINTOacciones_usuario(usuario,accion,fecha,hora)VALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "INSERTINTOacciones_usuario(usuario,accion,fecha,hora)VALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "INSERT INTO acciones_usuario (usuario, accion, fecha, hora) VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 13:24:36.586176-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE [*]FUNCTION registrar_accion(p_usuario VARCHAR, p_accion VARCHAR)\000d\000aRETURNS INTEGER\000d\000aAS '\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME);\000d\000a  RETURN 1;\000d\000a'\000d\000aLANGUAGE SQL"; se esperaba "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"
+Syntax error in SQL statement "CREATE [*]FUNCTION registrar_accion(p_usuario VARCHAR, p_accion VARCHAR)\000d\000aRETURNS INTEGER\000d\000aAS '\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME);\000d\000a  RETURN 1;\000d\000a'\000d\000aLANGUAGE SQL"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+CREATE FUNCTION registrar_accion(p_usuario VARCHAR, p_accion VARCHAR)
+RETURNS INTEGER
+AS '
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (p_usuario, p_accion, CURRENT_DATE, CURRENT_TIME);
+  RETURN 1;
+'
+LANGUAGE SQL [42001-224]
+2024-12-04 13:26:05.656570-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 13:26:25.534161-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 15:01:06.468085-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 15:05:21.396691-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"
+Syntax error in SQL statement "\000d\000aINSERTINTOacciones_usuario(usuario,accion,fecha,hora)\000d\000aVALUES(:usuario,:accion,CURRENT_DATE,CURRENT_TIME)"; SQL statement:
+CREATE ALIAS registrar_accion FOR "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (:usuario, :accion, CURRENT_DATE, CURRENT_TIME)" [42000-224]
+2024-12-04 15:06:27.594121-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE [*]PROCEDURE registrar_accion(\000d\000a  usuario VARCHAR,\000d\000a  accion VARCHAR\000d\000a)\000d\000aLANGUAGE SQL\000d\000aMODIFIES SQL DATA\000d\000aBEGIN ATOMIC\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME)"; se esperaba "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"
+Syntax error in SQL statement "CREATE [*]PROCEDURE registrar_accion(\000d\000a  usuario VARCHAR,\000d\000a  accion VARCHAR\000d\000a)\000d\000aLANGUAGE SQL\000d\000aMODIFIES SQL DATA\000d\000aBEGIN ATOMIC\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME)"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+CREATE PROCEDURE registrar_accion(
+  usuario VARCHAR,
+  accion VARCHAR
+)
+LANGUAGE SQL
+MODIFIES SQL DATA
+BEGIN ATOMIC
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME) [42001-224]
+2024-12-04 15:06:27.595120-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]END"
+Syntax error in SQL statement "[*]END"; SQL statement:
+END [42000-224]
+2024-12-04 15:08:31.760487-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "CREATE [*]PROCEDURE registrar_accion(\000d\000a  usuario VARCHAR,\000d\000a  accion VARCHAR\000d\000a)\000d\000aLANGUAGE SQL\000d\000aMODIFIES SQL DATA\000d\000aBEGIN ATOMIC\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME)"; se esperaba "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"
+Syntax error in SQL statement "CREATE [*]PROCEDURE registrar_accion(\000d\000a  usuario VARCHAR,\000d\000a  accion VARCHAR\000d\000a)\000d\000aLANGUAGE SQL\000d\000aMODIFIES SQL DATA\000d\000aBEGIN ATOMIC\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME)"; expected "OR REPLACE, FORCE, VIEW, MATERIALIZED, ALIAS, SEQUENCE, USER, TRIGGER, ROLE, SCHEMA, CONSTANT, DOMAIN, TYPE, AGGREGATE, LINKED, MEMORY, CACHED, LOCAL TEMPORARY, GLOBAL TEMPORARY, TEMPORARY, TABLE, SYNONYM, UNIQUE, SPATIAL, INDEX"; SQL statement:
+CREATE PROCEDURE registrar_accion(
+  usuario VARCHAR,
+  accion VARCHAR
+)
+LANGUAGE SQL
+MODIFIES SQL DATA
+BEGIN ATOMIC
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (usuario, accion, CURRENT_DATE, CURRENT_TIME) [42001-224]
+2024-12-04 15:08:31.761491-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]END"
+Syntax error in SQL statement "[*]END"; SQL statement:
+END [42000-224]
+2024-12-04 15:08:31.762485-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]/"
+Syntax error in SQL statement "[*]/"; SQL statement:
+/ [42000-224]
+2024-12-04 15:10:08.680682-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "PREPARE stmt [*]FROM ""\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (?, ?, CURRENT_DATE, CURRENT_TIME)"""; se esperaba "(, AS"
+Syntax error in SQL statement "PREPARE stmt [*]FROM ""\000d\000a  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)\000d\000a  VALUES (?, ?, CURRENT_DATE, CURRENT_TIME)"""; expected "(, AS"; SQL statement:
+PREPARE stmt FROM "
+  INSERT INTO acciones_usuario (usuario, accion, fecha, hora)
+  VALUES (?, ?, CURRENT_DATE, CURRENT_TIME)" [42001-224]
+2024-12-04 15:10:08.682671-05:00 jdbc[44]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Función alias "STMT" no encontrada
+Function alias "STMT" not found; SQL statement:
+EXECUTE stmt ('usuario', 'accion') [90077-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:644)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.parseExecutePostgre(Parser.java:2402)
+	at org.h2.command.Parser.parsePrepared(Parser.java:701)
+	at org.h2.command.Parser.parse(Parser.java:592)
+	at org.h2.command.Parser.parse(Parser.java:564)
+	at org.h2.command.Parser.prepareCommand(Parser.java:483)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:639)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:559)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1166)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1345)
+	at org.h2.server.web.WebApp.query(WebApp.java:1143)
+	at org.h2.server.web.WebApp.query(WebApp.java:1119)
+	at org.h2.server.web.WebApp.process(WebApp.java:245)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:177)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-12-04 15:44:05.068866-05:00 jdbc[55]: null
+org.h2.message.DbException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.message.DbException.get(DbException.java:188)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:218)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:135)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:724)
+	at com.zaxxer.hikari.pool.HikariPool$PoolEntryCreator.call(HikariPool.java:703)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: La conexión no fue cerrada por la aplicación y esta siendo limpiada (garbage collected)
+The connection was not closed by the application and is garbage collected [90018-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 16 more
+2024-12-05 12:47:49.969937-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]ID_ACCION"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]ID_ACCION"; expected "INSERT"; SQL statement:
+ID_ACCION [42001-224]
+2024-12-05 12:47:50.687644-05:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]ID_ACCION"; se esperaba "INSERT"
+Syntax error in SQL statement "[*]ID_ACCION"; expected "INSERT"; SQL statement:
+ID_ACCION [42001-224]
