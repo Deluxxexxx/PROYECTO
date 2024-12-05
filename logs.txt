@@ -1,0 +1,25 @@
+04/12/2024 04:03p. m. - MostrarFormularioCreacion - Exitoso
+04/12/2024 04:03p. m. - GuardarReserva - Exitoso
+04/12/2024 04:03p. m. - CrearReserva - Exitoso
+04/12/2024 04:03p. m. - ObtenerMisReservas - Error: Cannot invoke "java.security.Principal.getName()" because "principal" is null
+04/12/2024 04:11p. m. - MostrarFormularioCreacion - Exitoso
+04/12/2024 04:11p. m. - GuardarReserva - Exitoso
+04/12/2024 04:11p. m. - CrearReserva - Exitoso
+04/12/2024 04:11p. m. - ObtenerMisReservas - Error: Cannot invoke "java.security.Principal.getName()" because "principal" is null
+04/12/2024 04:13p. m. - MostrarFormularioCreacion - Exitoso
+04/12/2024 04:35p. m. - MostrarFormularioCreacion - Exitoso
+04/12/2024 04:35p. m. - GuardarReserva - Exitoso
+04/12/2024 04:35p. m. - CrearReserva - Exitoso
+04/12/2024 04:35p. m. - MostrarFormularioCreacion - Exitoso
+04/12/2024 04:35p. m. - GuardarReserva - Exitoso
+04/12/2024 04:35p. m. - CrearReserva - Exitoso
+04/12/2024 04:35p. m. - ObtenerMisReservas - Error: Cannot invoke "java.security.Principal.getName()" because "principal" is null
+05/12/2024 12:23p. m. - MostrarFormularioCreacion - Exitoso
+05/12/2024 12:23p. m. - GuardarReserva - Exitoso
+05/12/2024 12:23p. m. - CrearReserva - Exitoso
+05/12/2024 12:23p. m. - ObtenerMisReservas - Error: Cannot invoke "java.security.Principal.getName()" because "principal" is null
+05/12/2024 12:24p. m. - ObtenerMisReservas - Error: Cannot invoke "java.security.Principal.getName()" because "principal" is null
+05/12/2024 12:49p. m. - MostrarFormularioCreacion - Exitoso
+05/12/2024 12:49p. m. - MostrarFormularioCreacion - Exitoso
+05/12/2024 12:50p. m. - GuardarReserva - Exitoso
+05/12/2024 12:50p. m. - CrearReserva - Exitoso
